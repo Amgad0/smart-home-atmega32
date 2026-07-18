@@ -19,7 +19,6 @@
 #define c1 DIO_ChannelC5
 #define c2 DIO_ChannelC6
 void keypad_init();
-Uint8 PrintKey(void);
 Uint8 keypad_checkpress();
 
 
