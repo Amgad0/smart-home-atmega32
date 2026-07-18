@@ -10,14 +10,19 @@
 #define CLIMATE_H_
 
 /*
- * Read the temperature sensor and switch the AC relay outputs:
- * on at/above TEMP_AC_ON, off at/below TEMP_AC_OFF (hysteresis in between).
- */
+	Function Name        : Climate_Update
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Read the temperature sensor and switch the AC relay outputs: on at/above TEMP_AC_ON, off at/below TEMP_AC_OFF (hysteresis in between).
+*/
 void Climate_Update(void);
 
 /*
- * Read the potentiometer and drive the Timer2 PWM appliance/fan duty cycle.
- */
+	Function Name        : Fan_Update
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Read the potentiometer and drive the Timer2 PWM appliance/fan duty cycle.
+*/
 void Fan_Update(void);
 
 #endif /* CLIMATE_H_ */

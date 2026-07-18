@@ -15,24 +15,52 @@
 
 #include "STD_Types.h"
 
-/* Start the ~10 ms Timer0 tick and begin counting the active session. */
+/*
+	Function Name        : Session_Start
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Start the ~10 ms Timer0 tick and begin counting the active session.
+*/
 void Session_Start(void);
 
-/* Stop the Timer0 tick (no more ticks accumulate). */
+/*
+	Function Name        : Session_Stop
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Stop the Timer0 tick (no more ticks accumulate).
+*/
 void Session_Stop(void);
 
-/* Reset the elapsed-tick counter back to zero. */
+/*
+	Function Name        : Session_Reset
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Reset the elapsed-tick counter back to zero.
+*/
 void Session_Reset(void);
 
-/* Raise the timeout flag if the active session (login_mode ADMIN or GUEST) has
- * run past its allowed idle time. A no-op when login_mode is NO_MODE. Call once
- * per main-loop iteration while logged in. */
+/*
+	Function Name        : Session_CheckExpiry
+	Function Returns     : void
+	Function Arguments   : uint8 login_mode
+	Function Description : Raise the timeout flag if the active session (login_mode ADMIN or GUEST) has run past its allowed idle time. A no-op when login_mode is NO_MODE. Call once per main-loop iteration while logged in.
+*/
 void Session_CheckExpiry(uint8 login_mode);
 
-/* TRUE once the active session has exceeded its allowed idle time. */
+/*
+	Function Name        : Session_TimedOut
+	Function Returns     : uint8
+	Function Arguments   : void
+	Function Description : Return TRUE once the active session has exceeded its allowed idle time.
+*/
 uint8 Session_TimedOut(void);
 
-/* Clear the timeout flag after it has been handled. */
+/*
+	Function Name        : Session_ClearTimeout
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Clear the timeout flag after it has been handled.
+*/
 void Session_ClearTimeout(void);
 
 #endif /* SESSION_H_ */

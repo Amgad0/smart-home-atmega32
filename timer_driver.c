@@ -2,7 +2,7 @@
  * timer_driver.c
  *
  * Created: 3/2/2018 4:44:59 PM
- *  Author: Mohamed Zaghlol
+ *  Author: Amgad Bassam
  */
 #include "timer_driver.h"
 #include "Bitmath.h"

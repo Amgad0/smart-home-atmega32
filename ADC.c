@@ -2,7 +2,7 @@
  * ADC.c
  *
  * Created: 10/22/2021 9:23:43 PM
- *  Author: amgad
+ *  Author: Amgad Bassam
  */ 
 
 #include "ADC.h"

@@ -2,7 +2,7 @@
  * EEPROM.h
  *
  *  Created on: Apr 12, 2018
- *      Author: User
+ *      Author: Amgad Bassam
  */
 
 #ifndef HEADERS_EEPROM_H_

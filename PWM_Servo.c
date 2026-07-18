@@ -2,7 +2,7 @@
  * PWM_Servo.c
  *
  * Created: 12/23/2021 3:32:27 PM
- *  Author: Wafeek
+ *  Author: Amgad Bassam
  */
 #include "PWM_Servo.h"
 

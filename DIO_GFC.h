@@ -2,7 +2,7 @@
  * DIO_GFC.h
  *
  * Created: 10/8/2021 10:42:06 PM
- *  Author: user
+ *  Author: Amgad Bassam
  */ 
 
 
@@ -29,6 +29,12 @@ typedef struct{
 #define PINCOUNT 32
 
 
+/*
+	Function Name        : DIO_Init
+	Function Returns     : void
+	Function Arguments   : void
+	Function Description : Program DDRA..DDRD from the PinCFG[] table (the single source of truth for pin direction). Call once at boot, before configuring any peripheral.
+*/
 void DIO_Init(void);
 
 
