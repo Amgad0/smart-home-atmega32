@@ -1,7 +1,5 @@
 #include "EEPROM.h"
 #include <avr/io.h>
-extern volatile uint16 session_counter ;//indicate session time
-extern uint8 timeout_flag ;//stores if the session is still valid or outdated
 
 uint8 EEPROM_ui8ReadByteFromAddress(uint16 u16Address)
 {
@@ -93,20 +91,8 @@ void EEPROM_vWriteBlockToAddress(uint16 uiAddress, uint8* uiData,uint16 size)
 		counter++;//increase bytes counter
 	}
 }
-/* ui8ComparePass() moved to the auth module as Auth_ComparePin(). */
-
-uint8 u8GetKeyPressed(uint8 u8LoginMode)
-{
-	uint8 key_pressed = notpressed;
-	while (key_pressed == notpressed)//repeat till the user press any key
-	{
-		if ( (session_counter>= ADMIN_TIMEOUT && u8LoginMode == ADMIN) || ( session_counter >= GUEST_TIMEOUT && u8LoginMode == GUEST ))//check for timeout
-		{
-			timeout_flag = TRUE;//set timeout flag to true
-			break;//break the loop that wait for input from the user
-		}
-
-		key_pressed = keypad_checkpress();//if the user pressed any button in keypad save the value in key_pressed
-	}
-	return key_pressed;
-}
+/*
+ * ui8ComparePass() moved to the auth module as Auth_ComparePin().
+ * u8GetKeyPressed() removed: the session-timeout check it embedded now lives in
+ * session.c as Session_CheckExpiry(), called from the main loop.
+ */

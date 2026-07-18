@@ -45,6 +45,9 @@ int main(void)
 		Climate_Update();
 		Fan_Update();
 
+		/* Auto-logout: flag the session once it has been idle past its budget. */
+		Session_CheckExpiry(login_mode);
+
 		if (Session_TimedOut() == TRUE)
 		{
 			Session_Stop();
