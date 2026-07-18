@@ -42,7 +42,7 @@ Found while restructuring `main.c` into modules; being addressed one at a time i
 - ~~`UART_Send`/`UART_Recieve` wait on the wrong status bits~~ — **fixed**: `UART_Send` now waits on `UDRE` (data-register-empty) before writing, and `UART_Recieve` waits on `RXC` (receive-complete) before reading. These helpers aren't on the active RX path (the ISR-driven `remote.c` flow reads the latched byte directly), so this is a latent-correctness fix for any future direct use.
 - ~~Session auto-logout doesn't work~~ — **fixed**: the idle-timeout comparison, previously stranded inside `EEPROM.c`'s uncalled `u8GetKeyPressed()`, now lives in `session.c` as `Session_CheckExpiry()` and is called every main-loop iteration, so an idle logged-in session re-locks after its role's timeout budget.
 - Two keypad-scan implementations coexist in `Keypad.c` (`keypad_checkpress` and `PrintKey`), duplicating the row/column scan with different read primitives.
-- First-boot provisioning stamps the wrong EEPROM "pass set" flag for the Admin PIN, so the device never persists that it has been provisioned.
+- ~~First-boot provisioning stamps the wrong EEPROM "pass set" flag~~ — **fixed**: `Auth_Provision()` now stamps `ADMIN_PASS_STATUS_ADDRESS` after writing the admin PIN. It previously wrote the *guest* status flag twice, leaving the admin status byte unset — since `Auth_IsProvisioned()` requires both flags, the device re-ran first-time PIN setup on every power-on even though the stored PINs and login were otherwise correct.
 
 ## Author
 
