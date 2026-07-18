@@ -8,7 +8,8 @@
 
 void Timer1_ServoPWM(void)
 {
-	DDRD |= (1<<5);
+	/* Pin direction (OC1A / PD5 as output) is owned by the DIO_GFC PinCFG table
+	 * and applied by DIO_Init(); this function configures only the timer. */
 	TCCR1A = (1<<COM1A1)|(1<<WGM11);
 	TCCR1B = (1<<WGM12)|(1<<WGM13)|(1<<CS11)|(1<<CS10);
 	//ICR1 = 5000;
@@ -21,7 +22,8 @@ void Servo(long angle)
 
 void Timer2_PhasePWM(void)
 {
-	DDRD |= (1<<7);
+	/* Pin direction (OC2 / PD7 as output) is owned by the DIO_GFC PinCFG table
+	 * and applied by DIO_Init(); this function configures only the timer. */
 	TCCR2 |= (1<<WGM20)|(1<<COM21)|(1<<CS21);
 }
 

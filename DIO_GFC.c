@@ -7,7 +7,13 @@
 
 #include "DIO_GFC.h"
 
-
+/*
+ * Single source of truth for every pin's direction and reset level.
+ * DIO_Init() walks this table once at boot to program DDRA..DDRD. No other
+ * module should set DDRx directly — output pins used elsewhere (servo PD5,
+ * fan/OC2 PD7, AC/fan relays PB5-PB7, lamps PD2/PD3, PA1) are declared Output
+ * here, so a pin remap is a one-line edit in this table.
+ */
 DIO_PinCFG PinCFG[] = {
 	//PORTA
 	{Input,STD_High},

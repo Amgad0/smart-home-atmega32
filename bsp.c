@@ -23,31 +23,24 @@ void BSP_Init(void)
 {
 	sei();
 
-	/* PWM timers + door servo */
+	/* Pin directions first: DIO_Init() applies the DIO_GFC PinCFG table, which
+	 * is the single source of truth for every pin's direction (servo, AC/fan
+	 * relays, lamps, keypad, LCD, ADC inputs). Peripherals are configured after,
+	 * so their output pins are already set up by the time they are driven. */
+	DIO_Init();
+
+	/* PWM timers + door servo (timer config only; pins owned by PinCFG above) */
 	Timer1_ServoPWM();
 	Timer2_PhasePWM();
 
 	UART_Init();
 	Servo(DOOR_CLOSED_ANGLE);
 
-	/* DIO / display / keypad */
-	DIO_Init();
+	/* Display / keypad */
 	LCD_Init();
 	keypad_init();
-
-	/* Output direction bits (these mirror the DIO_GFC PinCFG table; kept here
-	 * because the original firmware set them explicitly at this point). */
-	SetBit(DDRD, MOTOR_BIT);            /* door servo output      */
-	SetBit(DDRB, AC_FAN_BIT);           /* AC / fan relay outputs */
-	SetBit(DDRB, AC_RELAY1_BIT);
-	SetBit(DDRB, AC_RELAY2_BIT);
 
 	ADC_Init();
 
 	ICR1 = SERVO_ICR1_TOP;              /* Timer1 Fast-PWM top for the servo */
-
-	SetBit(DDRD, LAMP1_BIT);            /* lamp relay outputs */
-	SetBit(DDRD, LAMP2_BIT);
-
-	SetBit(DDRA, 1);                    /* PA1 output (matches PinCFG) */
 }
