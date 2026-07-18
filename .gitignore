@@ -1,0 +1,23 @@
+# Atmel Studio / Microchip Studio build output
+Debug/
+Release/
+[Dd]ebug/
+[Rr]elease/
+*.o
+*.d
+*.elf
+*.hex
+*.eep
+*.lss
+*.map
+*.srec
+obj/
+
+# Atmel Studio IDE/VS folders
+.vs/
+*.suo
+*.user
+*.userprefs
+
+# Claude Code project notes (not part of the firmware source)
+CLAUDE.md
