@@ -14,11 +14,11 @@ void UART_Init(void){
 	UBRRH=UBRR>>8;
 }
 void UART_Send(unsigned char info){
-	while(!(UCSRA&(1<<RXC)));
+	while(!(UCSRA&(1<<UDRE)));   /* wait until the transmit data register is empty */
 	UDR=info;
 }
 unsigned char UART_Recieve(void){
-	while(!(UCSRA&(1<<UDRE)));
+	while(!(UCSRA&(1<<RXC)));    /* wait until a byte has been received */
 	return UDR;
 }
 void UART_String(char *string){
