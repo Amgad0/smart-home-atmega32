@@ -40,7 +40,7 @@ Found while restructuring `main.c` into modules; being addressed one at a time i
 
 - ~~Pin direction is configured in two places~~ — **fixed**: `DIO_GFC.c`'s `PinCFG[]` table is now the single source of truth for every pin's direction. The redundant `DDRx` writes were removed from `bsp.c` and `PWM_Servo.c`, and `BSP_Init()` now calls `DIO_Init()` first so the table is applied before any peripheral is configured.
 - `UART_Send`/`UART_Recieve` (`UART.c`) wait on the wrong status bits (`RXC`/`UDRE` swapped).
-- Session auto-logout doesn't work: the idle-timeout check is stranded inside `EEPROM.c`'s `u8GetKeyPressed()`, which nothing calls.
+- ~~Session auto-logout doesn't work~~ — **fixed**: the idle-timeout comparison, previously stranded inside `EEPROM.c`'s uncalled `u8GetKeyPressed()`, now lives in `session.c` as `Session_CheckExpiry()` and is called every main-loop iteration, so an idle logged-in session re-locks after its role's timeout budget.
 - Two keypad-scan implementations coexist in `Keypad.c` (`keypad_checkpress` and `PrintKey`), duplicating the row/column scan with different read primitives.
 - First-boot provisioning stamps the wrong EEPROM "pass set" flag for the Admin PIN, so the device never persists that it has been provisioned.
 
