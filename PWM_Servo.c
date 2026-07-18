@@ -12,7 +12,7 @@ void Timer1_ServoPWM(void)
 	 * and applied by DIO_Init(); this function configures only the timer. */
 	TCCR1A = (1<<COM1A1)|(1<<WGM11);
 	TCCR1B = (1<<WGM12)|(1<<WGM13)|(1<<CS11)|(1<<CS10);
-	//ICR1 = 5000;
+	/* ICR1 (Fast-PWM top) is set once in BSP_Init() as SERVO_ICR1_TOP. */
 }
 
 void Servo(long angle)

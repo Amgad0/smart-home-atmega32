@@ -81,9 +81,7 @@ void Auth_Provision(void)
 	LCD_String("ADMIN PASS");
 	Auth_ReadPin(pass);
 	EEPROM_vWriteBlockToAddress(EEPROM_ADMIN_ADDRESS, pass, PASS_SIZE);
-	/* NOTE: original stamps the GUEST status address here, not the ADMIN one.
-	 * Preserved verbatim as part of the behavior-preserving refactor. */
-	EEPROM_vWriteByteToAddress(GUEST_PASS_STATUS_ADDRESS, PASS_SET);
+	EEPROM_vWriteByteToAddress(ADMIN_PASS_STATUS_ADDRESS, PASS_SET);
 	LCD_Cmd(0X01);
 	_delay_ms(500);
 	LCD_Cmd(0x01);
