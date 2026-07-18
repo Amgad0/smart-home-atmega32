@@ -73,4 +73,41 @@
 #define TEMPERATURE_MENU     (uint8)10
 /*****************************************************************************************/
 
+/****************************   Climate / appliance control  ****************************/
+#define TEMP_SENSOR_CHANNEL   (uint8)0      /* ADC channel of the temperature sensor   */
+#define POT_CHANNEL           (uint8)2      /* ADC channel of the fan/dimmer pot        */
+#define ADC_SCALE_DIVISOR     (uint8)4      /* raw ADC reading is divided by this       */
+
+#define TEMP_AC_ON            (uint8)28     /* AC switches on at/above this temperature */
+#define TEMP_AC_OFF           (uint8)21     /* AC switches off at/below this temperature*/
+
+#define AC_FAN_BIT            (uint8)5      /* PORTB bit cleared while AC is running    */
+#define AC_RELAY1_BIT         (uint8)6      /* PORTB bits driven high when AC turns on  */
+#define AC_RELAY2_BIT         (uint8)7
+/*****************************************************************************************/
+
+/****************************   Door servo geometry  ************************************/
+#define SERVO_ICR1_TOP        (uint16)5000  /* Timer1 Fast-PWM top for the door servo   */
+#define DOOR_OPEN_ANGLE       (uint8)90
+#define DOOR_CLOSED_ANGLE     (uint8)0
+#define MOTOR_BIT             (uint8)5      /* PORTD servo output pin                   */
+/*****************************************************************************************/
+
+/****************************   Lamp relay outputs (PORTD)  *****************************/
+#define LAMP1_BIT             (uint8)2
+#define LAMP2_BIT             (uint8)3
+#define LAMP_TOGGLE_DELAY_MS  (uint16)500   /* debounce/settle delay after a toggle     */
+/*****************************************************************************************/
+
+/****************************   UART remote command codes  ******************************/
+/* Admin session */
+#define CMD_ADMIN_DOOR_OPEN    (uint8)'1'
+#define CMD_ADMIN_DOOR_CLOSE   (uint8)'2'
+#define CMD_ADMIN_LAMP1_TOGGLE (uint8)'3'
+#define CMD_ADMIN_LAMP2_TOGGLE (uint8)'4'
+/* Guest session */
+#define CMD_GUEST_LAMP1_TOGGLE (uint8)'1'
+#define CMD_GUEST_LAMP2_TOGGLE (uint8)'2'
+/*****************************************************************************************/
+
 #endif /* MAIN_CONFIG_H_ */

@@ -43,6 +43,6 @@ void EEPROM_vWriteByteToAddress( uint16 u16Address,  uint8 u8Data);
 	Function Description : Write block of bytes  of the given size (size) to EEPROM at the given address(u16Address) from the given array (u8Data).
 */
 void EEPROM_vWriteBlockToAddress( uint16 u16Address,uint8* u8Data, uint16 size);
-uint8 ui8ComparePass( uint8* pass1, uint8* pass2, uint8 size);
+/* PIN comparison moved to the auth module (Auth_ComparePin). */
 uint8 u8GetKeyPressed( uint8 u8LoginMode);
 #endif /* HEADERS_EEPROM_H_ */
