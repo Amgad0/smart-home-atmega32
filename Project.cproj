@@ -36,7 +36,7 @@
   <documentation help="" />
   <offline-documentation help="" />
   <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
   </dependencies>
 </framework-data>
     </AsfFrameworkConfig>
@@ -124,6 +124,36 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="auth.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="auth.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="bsp.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="bsp.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="climate.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="climate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="remote.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="remote.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="session.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="session.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Bitmath.h">

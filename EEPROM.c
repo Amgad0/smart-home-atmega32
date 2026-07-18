@@ -93,21 +93,7 @@ void EEPROM_vWriteBlockToAddress(uint16 uiAddress, uint8* uiData,uint16 size)
 		counter++;//increase bytes counter
 	}
 }
-uint8 ui8ComparePass(uint8* pass1,uint8* pass2,uint8 size)
-{
-	uint8 pin_counter=0;//the offset of the character of the pin
-	uint8 ret_value = TRUE;
-	while (pin_counter<size)//loop till the pin is fully entered
-	{
-		if (*(pass1+pin_counter)!=*(pass2+pin_counter))//if the two characters of the entered pin and the stored pin are not equal
-		{
-			ret_value= FALSE;//returns false that means the two PINs are not equal
-			break;//break the loop
-		}
-		pin_counter++;//increase thee offset by one
-	}
-	return ret_value;//returns false that means the two PINs are equal since all characters of the PINs are equal
-}
+/* ui8ComparePass() moved to the auth module as Auth_ComparePin(). */
 
 uint8 u8GetKeyPressed(uint8 u8LoginMode)
 {
