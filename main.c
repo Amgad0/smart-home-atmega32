@@ -67,8 +67,8 @@ int main(void)
 		Remote_Dispatch(login_mode);
 
 		/* Echo any keypad press to the LCD. */
-		data = PrintKey();
-		if (data != 0)
+		data = keypad_checkpress();
+		if (data != notpressed)
 		{
 			LCD_Char(data);
 			_delay_ms(200);

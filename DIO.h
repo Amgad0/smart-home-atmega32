@@ -18,6 +18,5 @@
 void DIO_Write(DIO_ChannelTypes ChannelID,STD_LevelTypes Level);
 STD_LevelTypes DIO_Read(DIO_ChannelTypes ChannelID);
 void DIO_Toggle(DIO_ChannelTypes ChannelID);
-uint8 DIO_u8read(uint8 portname,uint8 pinnumber);
 
 #endif /* DIO_H_ */

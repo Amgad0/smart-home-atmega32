@@ -8,41 +8,10 @@
 #include "DIO.h"
 #include <avr//io.h>
 #include "Bitmath.h"
-uint8 DIO_u8read(uint8 portname,uint8 pinnumber)
-{
-	uint8 return_value=0;
-	switch(portname)
-	{
-		case 'A' :
-		return_value=GetBit(PINA,pinnumber);//Read the value from the given pin in port A
-		break;
 
-		case 'B' :
-		return_value=GetBit(PINB,pinnumber);//Read the value from the given pin in port B
-		break;
-
-		case 'C' :
-		return_value=GetBit(PINC,pinnumber);//Read the value from the given pin in port C
-		break;
-
-		case 'D' :
-		return_value=GetBit(PIND,pinnumber);//Read the value from the given pin in port D
-		break;
-		default: break;
-	}
-	return return_value ;
-}
-
-
-
-
-
-
-
-
-
-
-
+/* DIO_u8read() removed: it duplicated DIO_Read() (same PINx bit, keyed by a
+ * port letter + pin number instead of a DIO_ChannelTypes value). Keypad.c's
+ * scan routine now reads columns via DIO_Read() like every other DIO caller. */
 
 void DIO_Write(DIO_ChannelTypes ChannelID,STD_LevelTypes Level){
 	DIO_PortTypes Portx = ChannelID/8;
