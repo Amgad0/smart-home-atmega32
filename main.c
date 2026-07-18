@@ -3,7 +3,7 @@
 *
 * Smart Home access-control & appliance-control system (ATmega32).
 *
-* Original author : amgad bassam (2021)
+* Original author : Amgad Bassam (2021)
 * Refactored into modules (bsp / auth / session / climate / remote) for
 * readability; application behavior is unchanged.
 *

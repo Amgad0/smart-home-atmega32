@@ -2,7 +2,7 @@
  * BitMath.h
  *
  * Created: 10/8/2021 8:41:22 PM
- *  Author: user
+ *  Author: Amgad Bassam
  */ 
 
 
